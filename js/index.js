@@ -60,7 +60,8 @@ function localSet() {
     $("#coins").val(char.coins);
     $("input[id=quiet_chat]").val(chat);
     setCharacterInfo(char);
-
+    //$("#" +char.charClass.toLowerCase() + "_checkbox").prop( "checked", true );;
+    $("#" +char.charClass.toLowerCase() + "_checkbox").click();
 }
 /**
  * Throws a warning
@@ -115,10 +116,38 @@ function copyToClipboard(text) {
     $("input[id=command_box]").focus().select();
 }
 
+function classStatCombiner(classList) {
+    var totals = {
+        success: 0,
+        coin: 0,
+        find: 0,
+        xp: 0,
+        extra: ''
+    };
+    classList.forEach(function(charClass) {
+        if (classes[charClass]) {
+            totals.success = totals.success + classes[charClass].success;
+            totals.coin = totals.coin + classes[charClass].wolfcoinBonus;
+            totals.find = totals.find + classes[charClass].itemFind;
+            totals.xp = totals.xp + classes[charClass].xpBonus;
+            Object.keys(classes[charClass].bonus).forEach(function(key) {
+                totals.extra = totals.extra + classes[charClass].bonus[key];
+            });
+        }
+    });
+    return totals;
+}
+function classHelerTable(vars) {
+    stats = classStatCombiner(vars);
+    $(".output_success").find("#output_value").text(stats.success);
+    $(".output_coin").find("#output_value").text(stats.coin);
+    $(".output_find").find("#output_value").text(stats.find);
+    $(".output_xp").find("#output_value").text(stats.xp);
+    $(".output_bonus").find("#output_value").text(stats.extra);
+}
+
 //****** Actions *******//
 
-//* Map local info
-localSet();
 
 var $body = $("body");
 
@@ -152,6 +181,13 @@ $body.on('click', 'button[id=lobos_stream]', function() {
     $("iframe[id=lobosjr_stream_embed]").removeClass('hidden');
     $("iframe[id=lobosjr_stream_embed]").attr('style', 'position:absolute;top:0;left:0;width:100%;height:100%;');
     $("iframe[id=lobosjr_stream_embed]").attr("src", "//cdn.embedly.com/widgets/media.html?src=%2F%2Fwww-cdn.jtvnw.net%2Fswflibs%2FTwitchPlayer.swff%3Fchannel%3Dlobosjrs&fv=hostname%3Dwww.twitch.tv%26start_volume%3D25%26channel%3Dlobosjr%26auto_play%3Dfalse&url=http%3A%2F%2Fwww.twitch.tv%2Flobosjr&image=http%3A%2F%2Fstatic-cdn.jtvnw.net%2Fjtv_user_pictures%2Flobosjr-profile_image-9c42176c5e6eb5db-600x600.jpeg&key=43cfe8de63744b7185b534b0ef9fe4f5&type=application%2Fx-shockwave-flash&schema=twitch");
+});
+$body.on('click', '.class_table', function() {
+            var classes = [];
+    $(".class_table:checked").each(function(index){
+        classes.push( $(this).attr('id').split('_')[0] );
+    });
+    classHelerTable(classes);
 });
 $body.on('click', "#helpToggle", function() {
     if (!$(this).hasClass('toggleOn')) {
@@ -187,3 +223,7 @@ $body.on('change', '.classInput', function() {
 $("input[id=command_box]").bind('copy', function(test) {
     console.log(test);
 });
+
+
+//* Map local info
+localSet();
