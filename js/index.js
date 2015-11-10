@@ -2,10 +2,9 @@
  * Function File
  * Sets functions and builds functionality
  */
-
 //****** Functions *******//
 /**
- * add capitalize fucntion to String object
+ * add capitalize function to String object
  */
 String.prototype.capitalizeFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
@@ -123,6 +122,9 @@ localSet();
 
 var $body = $("body");
 
+/**
+ * On Click
+ */
 $body.on("click", ".command", function() {
     var command = $(this).attr('data-id');
     var query = '/w lobotjr ' + command;
@@ -131,21 +133,9 @@ $body.on("click", ".command", function() {
         var value = $(this).parent('span').parent('div').find('input').val();
         query = query + ' ' + value;
     }
-
     copyToClipboard(query);
 });
-
-$body.on("keyup", ".dungeonID", function() {
-    $('.dungeonID').val($(this).val());
-    dungeonInfo($(this).val());
-});
-$body.on("keyup", ".itemInput", function() {
-    $('.itemInput').val($(this).val());
-});
-$("body").on('change', '.classInput', function() {
-    localSave();
-});
-$("body").on('click', 'button[id=quiet_chat]', function() {
+$body.on('click', 'button[id=quiet_chat]', function() {
     var username = $("input[id=quiet_chat]").val();
     if (username != '') {
         localStorage.setItem('WRPG_SavedChat', username);
@@ -153,23 +143,17 @@ $("body").on('click', 'button[id=quiet_chat]', function() {
         $("iframe[id=chat_embed]").attr("src", "//www.twitch.tv/" + username + "/chat");
     }
 });
-$("body").on('click', 'button[id=lobos_chat]', function() {
+$body.on('click', 'button[id=lobos_chat]', function() {
     $("iframe[id=lobosjr_embed]").removeClass('hidden');
     $("iframe[id=lobosjr_embed]").attr("src", "//www.twitch.tv/lobosjr/chat");
 });
-$("body").on('click', 'button[id=lobos_stream]', function() {
-    $("#embedly_container").attr('style','position:relative;padding-bottom:75.0000%;height:0;overflow:hidden;');
+$body.on('click', 'button[id=lobos_stream]', function() {
+    $("#embedly_container").attr('style', 'position:relative;padding-bottom:75.0000%;height:0;overflow:hidden;');
     $("iframe[id=lobosjr_stream_embed]").removeClass('hidden');
-    $("iframe[id=lobosjr_stream_embed]").attr('style','position:absolute;top:0;left:0;width:100%;height:100%;')
+    $("iframe[id=lobosjr_stream_embed]").attr('style', 'position:absolute;top:0;left:0;width:100%;height:100%;');
     $("iframe[id=lobosjr_stream_embed]").attr("src", "//cdn.embedly.com/widgets/media.html?src=%2F%2Fwww-cdn.jtvnw.net%2Fswflibs%2FTwitchPlayer.swff%3Fchannel%3Dlobosjrs&fv=hostname%3Dwww.twitch.tv%26start_volume%3D25%26channel%3Dlobosjr%26auto_play%3Dfalse&url=http%3A%2F%2Fwww.twitch.tv%2Flobosjr&image=http%3A%2F%2Fstatic-cdn.jtvnw.net%2Fjtv_user_pictures%2Flobosjr-profile_image-9c42176c5e6eb5db-600x600.jpeg&key=43cfe8de63744b7185b534b0ef9fe4f5&type=application%2Fx-shockwave-flash&schema=twitch");
 });
-$("input[id=command_box]").bind('copy', function(test) {
-    console.log(test);
-});
-$(".send-chat-button").on('click', function() {
-    console.log('copy key pressed');
-});
-$("#helpToggle").on('click', function() {
+$body.on('click', "#helpToggle", function() {
     if (!$(this).hasClass('toggleOn')) {
         $(this).addClass('btn-warning');
         $(this).addClass('toggleOn');
@@ -180,4 +164,26 @@ $("#helpToggle").on('click', function() {
         $(this).removeClass('btn-warning');
         $('[data-toggle="tooltip"]').tooltip('destroy');
     }
+});
+/**
+ * On Keyup
+ */
+$body.on("keyup", ".dungeonID", function() {
+    $('.dungeonID').val($(this).val());
+    dungeonInfo($(this).val());
+});
+$body.on("keyup", ".itemInput", function() {
+    $('.itemInput').val($(this).val());
+});
+/**
+ * On Change
+ */
+$body.on('change', '.classInput', function() {
+    localSave();
+});
+/**
+ * On Copy
+ */
+$("input[id=command_box]").bind('copy', function(test) {
+    console.log(test);
 });
