@@ -1,5 +1,7 @@
 /**
  * Variables from the wiki
+ * Commands: https://docs.google.com/spreadsheets/d/1tSFuGwdTNScqBCwjdgWF5sc7i-SC0oj6zTPvXMYk0WM/edit#gid=0
+ * Dungeons: https://docs.google.com/spreadsheets/d/1kUrfVhMQmCmDTJZvsfihrjLvEhgJOGK5OoFEJPbltf0/edit#gid=0
  */
 var dungeons = {
         1: {
@@ -45,6 +47,9 @@ var dungeons = {
             cost: 90,
         }
     },
+    /**
+     * Classes: https://docs.google.com/spreadsheets/d/1viw1ryle08K3b_sStnhyaqodv-fYHEYQU27yrXcJS9Q/edit
+     */
     classes = {
         warrior: {
             name: 'Warrior',
@@ -96,6 +101,7 @@ var dungeons = {
     },
     /**
      * Probably not correct
+     * Levels: http://wolfpack-rpg.wikia.com/wiki/Levels
      */
     levelRanges = {
         1: [0, 54],
