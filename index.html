@@ -31,7 +31,7 @@
             <div class="col-sm-3">
                 <div class="input-group">
                     <span type="button" data-toggle="popover" class="input-group-addon btn btn-primary" data-placement="top" id="form-class">Class</span>
-                    <input id="class" type="text" class="form-control classInput" placeholder="Warrior" aria-describedby="class">
+                    <input id="class" type="text" class="form-control classInput" placeholder="Warrior" aria-describedby="form-class">
                 </div>
             </div>
             <div class="col-sm-3">
@@ -53,7 +53,9 @@
                 </div>
             </div>
         </div>
-        <h2>Commands <button id="helpToggle" type="button" class="btn btn-default">Toggle Help Text</button></h2>
+        <h2>Commands
+            <button id="helpToggle" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Hover over buttons for more information">Toggle Help Text</button>
+        </h2>
         <div class="row">
             <div class="col-sm-2 col-md-1 col-lg-1">
                 <h3 style="text-align: center;">Basic</h3>
@@ -79,12 +81,14 @@
                     </div>
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default command itemButton" data-id="!equip" data-toggle="tooltip" data-placement="top" title="Equip an item from your inventory">Equip</button></span>
+                            <button type="button" class="btn btn-default command itemButton" data-id="!equip" data-toggle="tooltip" data-placement="top" title="Equip an item from your inventory">Equip</button>
+                        </span>
                         <input type="text" class="form-control itemInput" placeholder="Item ID">
                     </div>
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default command itemButton" data-id="!unequip" data-toggle="tooltip" data-placement="top" title="Unequip an item from your inventory">Unequip</button></span>
+                            <button type="button" class="btn btn-default command itemButton" data-id="!unequip" data-toggle="tooltip" data-placement="top" title="Unequip an item from your inventory">Unequip</button>
+                        </span>
                         <input type="text" class="form-control itemInput" placeholder="Item ID">
                     </div>
                 </div>
@@ -101,7 +105,6 @@
                             <button type="button" class="btn btn-default command" data-id="!ready" data-toggle="tooltip" data-placement="right" title="Ready your party">Ready</button>
                             <button type="button" class="btn btn-default command" data-id="!unready" data-toggle="tooltip" data-placement="right" title="Unready your party">Unready</button>
                             <button type="button" class="btn btn-default command" data-id="!dungeonlist" data-toggle="tooltip" data-placement="right" title="Get link to Dungeon spreadsheet">Dungeon List</button>
-
                         </div>
                     </div>
                     <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
@@ -109,34 +112,40 @@
                             <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
                                 <div class="input-group">
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default command" data-id="!dungeon" data-toggle="tooltip" data-placement="top" title="Get detailed information about a dungeon">Dungeon</button></span>
+                                        <button type="button" class="btn btn-default command" data-id="!dungeon" data-toggle="tooltip" data-placement="top" title="Get detailed information about a dungeon">Dungeon</button>
+                                    </span>
                                     <input id="dungeon_input" type="text" class="form-control" placeholder="Dungeon ID">
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default command" data-id="!queue" data-toggle="tooltip" data-placement="top" title="Add you to Group Finder for a specific dungeon">Queue</button></span>
+                                        <button type="button" class="btn btn-default command" data-id="!queue" data-toggle="tooltip" data-placement="top" title="Add you to Group Finder for a specific dungeon">Queue</button>
+                                    </span>
                                     <input id="queue_input" type="text" class="form-control dungeonID" placeholder="Dungeon ID">
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default command" data-id="!start" data-toggle="tooltip" data-placement="top" title="Start dungeon by dungeon id">Start</button></span>
+                                        <button type="button" class="btn btn-default command" data-id="!start" data-toggle="tooltip" data-placement="top" title="Start dungeon by dungeon id">Start</button>
+                                    </span>
                                     <input id="dungeon_start" type="text" class="form-control dungeonID" placeholder="Dungeon ID">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="input-group">
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default command" data-id="!kick" data-toggle="tooltip" data-placement="top" title="Kick user_name from your party">Kick User</button></span>
+                                        <button type="button" class="btn btn-default command" data-id="!kick" data-toggle="tooltip" data-placement="top" title="Kick user_name from your party">Kick User</button>
+                                    </span>
                                     <input type="text" class="form-control" placeholder="Username">
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default command" data-id="!add" data-toggle="tooltip" data-placement="top" title="Add user_name to your party">Add User</button></span>
+                                        <button type="button" class="btn btn-default command" data-id="!add" data-toggle="tooltip" data-placement="top" title="Add user_name to your party">Add User</button>
+                                    </span>
                                     <input type="text" class="form-control" placeholder="Username">
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default command" data-id="/p" data-toggle="tooltip" data-placement="top" title="Sends a private message to your fellow party members">Message Party</button></span>
+                                        <button type="button" class="btn btn-default command" data-id="/p" data-toggle="tooltip" data-placement="top" title="Sends a private message to your fellow party members">Message Party</button>
+                                    </span>
                                     <input type="text" class="form-control" placeholder="Message...">
                                 </div>
                             </div>
@@ -170,23 +179,24 @@
         <div class="row">
             <div class="col-md-6">
                 <button id="lobos_chat" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Open up Lobosjr Twitch Chat">Turn on Chat</button>
-                <iframe frameborder="0" scrolling="no" id="lobosjr_embed" height="400px" width="100%">
+                <iframe class="hidden" frameborder="0" scrolling="no" id="lobosjr_embed" height="400px" width="100%">
                 </iframe>
             </div>
             <div class="col-md-6">
                 <div class="input-group">
-                    <span class="input-group-btn"><button id="quiet_chat" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add your own Twitch chat in to more easily see responses from Lobot">Quiet Chat</button></span>
+                    <span class="input-group-btn">
+                        <button id="quiet_chat" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add your own Twitch chat in to more easily see responses from Lobot">Quiet Chat</button>
+                    </span>
                     <input id="quiet_chat" type="text" class="form-control" placeholder="Your user name">
                 </div>
-                <iframe frameborder="0" scrolling="no" id="chat_embed" height="400px" width="100%">
-                </iframe>
+                <iframe class="hidden" frameborder="0" scrolling="no" id="chat_embed" height="400px" width="100%"></iframe>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <div class="embedly-responsive" style="position: relative;padding-bottom: 75.0000%;height: 0;overflow: hidden;">
-                    <iframe class="embedly-embed" frameborder="0" scrolling="no" allowfullscreen src="//cdn.embedly.com/widgets/media.html?src=%2F%2Fwww-cdn.jtvnw.net%2Fswflibs%2FTwitchPlayer.swff%3Fchannel%3Dlobosjrs&fv=hostname%3Dwww.twitch.tv%26start_volume%3D25%26channel%3Dlobosjr%26auto_play%3Dfalse&url=http%3A%2F%2Fwww.twitch.tv%2Flobosjr&image=http%3A%2F%2Fstatic-cdn.jtvnw.net%2Fjtv_user_pictures%2Flobosjr-profile_image-9c42176c5e6eb5db-600x600.jpeg&key=43cfe8de63744b7185b534b0ef9fe4f5&type=application%2Fx-shockwave-flash&schema=twitch"
-                    width="400" height="300" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"></iframe>
+                <button id="lobos_stream" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Open up Lobosjr Twitch Stream">Turn on Stream</button>
+                <div id="embedly_container" class="embedly-responsive">
+                    <iframe id="lobosjr_stream_embed" class="embedly-embed hidden" frameborder="0" scrolling="no" allowfullscreen width="400" height="300"></iframe>
                 </div>
             </div>
         </div>

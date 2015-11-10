@@ -1,14 +1,29 @@
+/**
+ * Function File
+ * Sets functions and builds functionality
+ */
+
+//****** Functions *******//
+/**
+ * add capitalize fucntion to String object
+ */
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
+/**
+ * Sets popover information with information about the class
+ */
 function setCharacterInfo(char) {
     console.log('change info');
-    if (char.class) {
-        var classTest = char.class.toLowerCase();
+    if (char.charClass) {
+        var classTest = char.charClass.toLowerCase();
         if (classes[classTest]) {
             var c = classes[classTest];
             var html = 'Mission Success: ' + c.success + '%<br>' + 'Wolfcoin Bonus: ' + c.wolfcoinBonus + '%<br>' + 'Item Find: ' + c.itemFind + '%<br>' + 'XP Bonux: ' + c.xpBonus + '%<br>';
             if (c.bonus[1]) {
                 html = html + 'Bonus: ' + c.bonus[1];
             }
-            $('#form-class').popover('destroy')
+            $('#form-class').popover('destroy');
             $('#form-class').popover({
                 content: html,
                 title: c.name,
@@ -17,26 +32,30 @@ function setCharacterInfo(char) {
         }
     }
 }
-
+/**
+ * Saves charcter inforamation to the local browser data
+ */
 function localSave() {
     var char = characterInfo();
-    localStorage.setItem('WRPG_Class', char.class);
+    localStorage.setItem('WRPG_Class', char.charClass);
     localStorage.setItem('WRPG_Coins', char.coins);
     localStorage.setItem('WRPG_Level', char.level);
     localStorage.setItem('WRPG_XP', char.xp);
     setCharacterInfo(char);
 }
-
+/**
+ * Maps saved data to inputs
+ */
 function localSet() {
     var char = {
-        class: localStorage.getItem('WRPG_Class'),
+        charClass: localStorage.getItem('WRPG_Class'),
         coins: localStorage.getItem('WRPG_Coins'),
         level: localStorage.getItem('WRPG_Level'),
         xp: localStorage.getItem('WRPG_XP')
     };
     var chat = localStorage.getItem('WRPG_SavedChat');
 
-    $("#class").val(char.class);
+    $("#class").val(char.charClass);
     $("#level").val(char.level);
     $("#xp").val(char.xp);
     $("#coins").val(char.coins);
@@ -44,29 +63,30 @@ function localSet() {
     setCharacterInfo(char);
 
 }
-localSet();
-
-var $body = $("body");
-
-String.prototype.capitalizeFirstLetter = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}
-
+/**
+ * Throws a warning
+ * @param string info warning text
+ */
 function warning(info) {
-    var html = '<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Warning!</strong> ' + info + '</div>'
+    var html = '<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Warning!</strong> ' + info + '</div>';
     $("#error").append(html);
 }
-
+/**
+ * Builds character as set on the page
+ */
 function characterInfo() {
     var character = {
-        class: $("#class").val(),
+        charClass: $("#class").val(),
         level: Number($("#level").val()),
         xp: Number($("#xp").val()),
         coins: Number($("#coins").val()),
-    }
+    };
     return character;
 }
-
+/**
+ * Sets the dungeon information if found
+ * @var object dungeons defined in vars.js file
+ */
 function dungeonInfo(id) {
     var panel = $("#dungeonInfo");
     if (!dungeons[id]) {
@@ -88,11 +108,20 @@ function dungeonInfo(id) {
 
     return d;
 }
-
+/**
+ * Adds text to our copy/paste area
+ */
 function copyToClipboard(text) {
     $("input[id=command_box]").val(text);
     $("input[id=command_box]").focus().select();
 }
+
+//****** Actions *******//
+
+//* Map local info
+localSet();
+
+var $body = $("body");
 
 $body.on("click", ".command", function() {
     var command = $(this).attr('data-id');
@@ -120,24 +149,33 @@ $("body").on('click', 'button[id=quiet_chat]', function() {
     var username = $("input[id=quiet_chat]").val();
     if (username != '') {
         localStorage.setItem('WRPG_SavedChat', username);
+        $("iframe[id=chat_embed]").removeClass('hidden');
         $("iframe[id=chat_embed]").attr("src", "//www.twitch.tv/" + username + "/chat");
     }
 });
 $("body").on('click', 'button[id=lobos_chat]', function() {
+    $("iframe[id=lobosjr_embed]").removeClass('hidden');
     $("iframe[id=lobosjr_embed]").attr("src", "//www.twitch.tv/lobosjr/chat");
+});
+$("body").on('click', 'button[id=lobos_stream]', function() {
+    $("#embedly_container").attr('style','position:relative;padding-bottom:75.0000%;height:0;overflow:hidden;');
+    $("iframe[id=lobosjr_stream_embed]").removeClass('hidden');
+    $("iframe[id=lobosjr_stream_embed]").attr('style','position:absolute;top:0;left:0;width:100%;height:100%;')
+    $("iframe[id=lobosjr_stream_embed]").attr("src", "//cdn.embedly.com/widgets/media.html?src=%2F%2Fwww-cdn.jtvnw.net%2Fswflibs%2FTwitchPlayer.swff%3Fchannel%3Dlobosjrs&fv=hostname%3Dwww.twitch.tv%26start_volume%3D25%26channel%3Dlobosjr%26auto_play%3Dfalse&url=http%3A%2F%2Fwww.twitch.tv%2Flobosjr&image=http%3A%2F%2Fstatic-cdn.jtvnw.net%2Fjtv_user_pictures%2Flobosjr-profile_image-9c42176c5e6eb5db-600x600.jpeg&key=43cfe8de63744b7185b534b0ef9fe4f5&type=application%2Fx-shockwave-flash&schema=twitch");
 });
 $("input[id=command_box]").bind('copy', function(test) {
     console.log(test);
 });
-$(".send-chat-button").on('click', function(test) {
-    console.log('yep');
+$(".send-chat-button").on('click', function() {
+    console.log('copy key pressed');
 });
 $("#helpToggle").on('click', function() {
-    if ( ! $(this).hasClass('toggleOn') ) {
+    if (!$(this).hasClass('toggleOn')) {
         $(this).addClass('btn-warning');
         $(this).addClass('toggleOn');
         $('[data-toggle="tooltip"]').tooltip();
-    } else {
+    }
+    else {
         $(this).removeClass('toggleOn');
         $(this).removeClass('btn-warning');
         $('[data-toggle="tooltip"]').tooltip('destroy');
