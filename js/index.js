@@ -61,7 +61,8 @@ function localSet() {
     $("input[id=quiet_chat]").val(chat);
     setCharacterInfo(char);
     //$("#" +char.charClass.toLowerCase() + "_checkbox").prop( "checked", true );;
-    $("#" +char.charClass.toLowerCase() + "_checkbox").click();
+    //$("#" +char.charClass.toLowerCase() + "_checkbox").click();
+    $(".class_button[data-id=" + char.charClass.toLowerCase() + "]").click();
 }
 /**
  * Throws a warning
@@ -137,6 +138,7 @@ function classStatCombiner(classList) {
     });
     return totals;
 }
+
 function classHelerTable(vars) {
     stats = classStatCombiner(vars);
     $(".output_success").find("#output_value").text(stats.success);
@@ -183,11 +185,23 @@ $body.on('click', 'button[id=lobos_stream]', function() {
     $("iframe[id=lobosjr_stream_embed]").attr("src", "//cdn.embedly.com/widgets/media.html?src=%2F%2Fwww-cdn.jtvnw.net%2Fswflibs%2FTwitchPlayer.swff%3Fchannel%3Dlobosjrs&fv=hostname%3Dwww.twitch.tv%26start_volume%3D25%26channel%3Dlobosjr%26auto_play%3Dfalse&url=http%3A%2F%2Fwww.twitch.tv%2Flobosjr&image=http%3A%2F%2Fstatic-cdn.jtvnw.net%2Fjtv_user_pictures%2Flobosjr-profile_image-9c42176c5e6eb5db-600x600.jpeg&key=43cfe8de63744b7185b534b0ef9fe4f5&type=application%2Fx-shockwave-flash&schema=twitch");
 });
 $body.on('click', '.class_table', function() {
-            var classes = [];
-    $(".class_table:checked").each(function(index){
-        classes.push( $(this).attr('id').split('_')[0] );
+    var classes = [];
+    $(".class_table:checked").each(function() {
+        classes.push($(this).attr('id').split('_')[0]);
     });
     classHelerTable(classes);
+});
+$body.on('click', '.class_button', function() {
+    if (!$(this).hasClass('active')) {
+        $(this).addClass('btn-info');
+        $(this).addClass('active');
+    }
+    else {
+        $(this).removeClass('active');
+        $(this).removeClass('btn-info');
+
+    }
+    $("#" + $(this).attr('data-id') + "_checkbox").click();
 });
 $body.on('click', "#helpToggle", function() {
     if (!$(this).hasClass('toggleOn')) {

@@ -1,7 +1,7 @@
 /**
  * Variables from the wiki
- * Commands: https://docs.google.com/spreadsheets/d/1tSFuGwdTNScqBCwjdgWF5sc7i-SC0oj6zTPvXMYk0WM/edit#gid=0
- * Dungeons: https://docs.google.com/spreadsheets/d/1kUrfVhMQmCmDTJZvsfihrjLvEhgJOGK5OoFEJPbltf0/edit#gid=0
+ * Commands: https://docs.google.com/spreadsheets/d/1tSFuGwdTNScqBCwjdgWF5sc7i-SC0oj6zTPvXMYk0WM/edit
+ * Dungeons: https://docs.google.com/spreadsheets/d/1kUrfVhMQmCmDTJZvsfihrjLvEhgJOGK5OoFEJPbltf0/edit
  */
 var dungeons = {
         1: {

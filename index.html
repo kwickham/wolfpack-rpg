@@ -10,6 +10,7 @@
     <title>Wolfpack RPG</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -30,7 +31,7 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="input-group">
-                    <span type="button" data-toggle="popover" class="input-group-addon btn btn-primary" data-placement="top" id="form-class">Class</span>
+                    <span type="button" data-toggle="popover" class="input-group-addon btn btn-primary active" data-placement="top" id="form-class">Class</span>
                     <input id="class" type="text" class="form-control classInput" placeholder="Warrior" aria-describedby="form-class">
                 </div>
             </div>
@@ -105,7 +106,7 @@
                             <button type="button" class="btn btn-default command" data-id="!leaveparty" data-toggle="tooltip" data-placement="right" title="Leave your current party/disband party">Leave Party</button>
                             <button type="button" class="btn btn-default command" data-id="!ready" data-toggle="tooltip" data-placement="right" title="Ready your party">Ready</button>
                             <button type="button" class="btn btn-default command" data-id="!unready" data-toggle="tooltip" data-placement="right" title="Unready your party">Unready</button>
-                            <button type="button" class="btn btn-default command" data-id="!dungeonlist" data-toggle="tooltip" data-placement="right" title="Get link to Dungeon spreadsheet">Dungeon List</button>
+                            <button type="button" class="btn btn-default command" data-id="!dungeonlist" data-toggle="tooltip" data-placement="right" title="Get link to Dungeon spreadsheet"><s>Dungeon List</s></button>
                         </div>
                     </div>
                     <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
@@ -156,62 +157,45 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-sm-6">
-                <div id="dungeonInfo" class="panel panel-default hidden">
+            <div class="col-xs-12 col-sm-7">
+                <div id="dungeonInfo" class="panel panel-info hidden">
                     <div class="panel-heading">Panel heading without title</div>
                     <div class="panel-body">
                         Panel content
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-5">
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingOne">
                             <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Party Classes</a>
-                                    - <span class="output_success">S:<span id="output_value">0</span>%</span>|
-                                    <span class="output_coin">C:<span id="output_value">0</span>%</span>|
-                                    <span class="output_find">F:<span id="output_value">0</span>%</span>|
-                                    <span class="output_xp">XP:<span id="output_value">0</span>%</span>
+                                    <small>
+                                    <span class="output_success bg-info">S:<span id="output_value">0</span>%</span>
+                                    <span class="output_coin bg-info">C:<span id="output_value">0</span>%</span>
+                                    <span class="output_find bg-info">F:<span id="output_value">0</span>%</span>
+                                    <span class="output_xp bg-info">XP:<span id="output_value">0</span>%</span>
+                                    </small>
                             </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                             <div class="panel-body">
-                                <table class="table table-condensed">
-                                    <thead>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <input id="warrior_checkbox" class="class_table" type="checkbox"> Warrior
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input id="mage_checkbox" class="class_table" type="checkbox"> Mage
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input id="rogue_checkbox" class="class_table" type="checkbox"> Rogue
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input id="ranger_checkbox" class="class_table" type="checkbox"> Ranger
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input id="cleric_checkbox" class="class_table" type="checkbox"> Cleric
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <input id="warrior_checkbox" class="class_table hidden" type="checkbox">
+                                <input id="mage_checkbox" class="class_table hidden" type="checkbox">
+                                <input id="rogue_checkbox" class="class_table hidden" type="checkbox">
+                                <input id="ranger_checkbox" class="class_table hidden" type="checkbox">
+                                <input id="cleric_checkbox" class="class_table hidden" type="checkbox">
+                                <div class="btn-group-vertical btn-block" role="group" aria-label="none">
+                                    <button type="button" class="btn btn-default class_button" data-id="warrior">Warrior</button>
+                                    <button type="button" class="btn btn-default class_button" data-id="mage">Mage</button>
+                                    <button type="button" class="btn btn-default class_button" data-id="rogue">Rogue</button>
+                                    <button type="button" class="btn btn-default class_button" data-id="ranger">Ranger</button>
+                                    <button type="button" class="btn btn-default class_button" data-id="cleric">Cleric</button>
+                                </div>
                                 <div id="class_table_output">
-                                    <span class="output_success">Success: <span id="output_value">0</span>%</span>|
-                                    <span class="output_coin">Coin Bonus: <span id="output_value">0</span>%</span>|
-                                    <span class="output_find">Item Find: <span id="output_value">0</span>%</span>|
+                                    <span class="output_success">Success: <span id="output_value">0</span>%</span>,
+                                    <span class="output_coin">Coin Bonus: <span id="output_value">0</span>%</span>,
+                                    <span class="output_find">Item Find: <span id="output_value">0</span>%</span>,
                                     <span class="output_xp">XP Bonus: <span id="output_value">0</span>%</span>
                                     <p>
                                         <span class="output_bonus">Extra: <span id="output_value"></span></span>
