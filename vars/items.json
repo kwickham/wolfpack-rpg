@@ -1,0 +1,39 @@
+{
+  "1": {
+    "dungeons": [4, 5],
+    "type": "uncommon",
+    "name": "Rogue's Jerkin",
+    "xp": 5,
+    "coins": 10,
+    "item": 0,
+    "success": 0
+  },
+  "2": {
+    "dungeons": [4, 5],
+    "type": "uncommon",
+    "name": "Mage's Robe",
+    "xp": 5,
+    "coins": 5,
+    "item": 5,
+    "success": 0
+  },
+  "3": {
+    "dungeons": [4, 5],
+    "type": "uncommon",
+    "name": "Warrior's Plate",
+    "xp": 5,
+    "coins": 5,
+    "item": 0,
+    "success": 5
+  },
+  "4": {
+    "dungeons": [4, 5],
+    "type": "uncommon",
+    "name": "Cleric Mail",
+    "xp": 5,
+    "coins": 5,
+    "item": 0,
+    "success": 0,
+    "death": 5
+  }
+}
