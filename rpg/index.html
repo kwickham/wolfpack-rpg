@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Wolfpack RPG Companion">
+    <meta name="author" content="kwickham">
+    <title>Wolfpack RPG</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container theme-showcase" role="main">
+        <div class="page-header">
+            <h1>Wolfpack RPG Companion</h1>
+            <small>This page stores data locally in your browser. No information is saved anywhere else.</small>
+            <a href="http://wolfpack-rpg.wikia.com/wiki/LobosJR%27s_Wolfpack_RPG_Wikia" class="btn btn-default btn-sm" role="button" target="_blank">RPG Wiki</a>
+            <a href="http://kwickham.github.io/wolfpack-rpg" class="btn btn-primary btn-sm" role="button" target="_blank">Github Project</a>
+        </div>
+        <h2>Character</h2>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <span type="button" data-toggle="popover" class="input-group-addon btn btn-primary active" data-placement="top" id="form-class">Class</span>
+                    <input id="class" type="text" class="form-control classInput" placeholder="Warrior" aria-describedby="form-class">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="form-coins">Coins</span>
+                    <input id="coins" type="text" class="form-control classInput" placeholder="0" aria-describedby="form-coins">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="form-level">Level</span>
+                    <input id="level" type="text" class="form-control classInput" placeholder="0" aria-describedby="form-level">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="form-xp">XP</span>
+                    <input id="xp" type="text" class="form-control classInput" placeholder="0" aria-describedby="form-xp">
+                </div>
+            </div>
+        </div>
+        <h2>Commands
+            <button id="helpToggle" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Hover over buttons for more information">Toggle Help Text</button>
+        </h2>
+        <div class="row">
+            <div class="col-sm-2 col-md-1 col-lg-1">
+                <h3 style="text-align: center;">Basic</h3>
+                <div class="btn-group-vertical" role="group" aria-label="none">
+                    <button type="button" class="btn btn-default command" data-id="!stats" data-toggle="tooltip" data-placement="right" title="Get current XP, Wolfcoins, & Level">Stats</button>
+                    <button type="button" class="btn btn-default command" data-id="!coins" data-toggle="tooltip" data-placement="right" title="Get current Wolfcoins">Coins</button>
+                    <button type="button" class="btn btn-default command" data-id="!xp" data-toggle="tooltip" data-placement="right" title="Get current XP & Level">XP</button>
+                    <button type="button" class="btn btn-default command" data-id="!level" data-toggle="tooltip" data-placement="right" title="Get current XP & Level">Level</button>
+                    <button type="button" class="btn btn-default command" data-id="!gloat" data-toggle="tooltip" data-placement="right" title="Tell chat your level [10 coins]">Gloat</button>
+                    <button type="button" class="btn btn-default command" data-id="!daily" data-toggle="tooltip" data-placement="right" title="Information about daily quests">Daily</button>
+                    <button type="button" class="btn btn-default command" data-id="?" data-toggle="tooltip" data-placement="right" title="Get some basic information">Help</button>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <h3 style="text-align: center;">Inventory</h3>
+                <div class="btn-group-vertical" role="group" aria-label="none">
+                    <button type="button" class="btn btn-danger command" data-id="!respec" data-toggle="tooltip" data-placement="right" title="Reset your character class [$$]">Respec</button>
+                    <button type="button" class="btn btn-default command" data-id="!inventory" data-toggle="tooltip" data-placement="right" title="Check your item inventory">Inventory</button>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default command itemButton" data-id="!item" data-toggle="tooltip" data-placement="top" title="Describes an item you possess">Item</button>
+                            </span>
+                        <input type="text" class="form-control itemInput" placeholder="Item ID">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default command itemButton" data-id="!equip" data-toggle="tooltip" data-placement="top" title="Equip an item from your inventory">Equip</button>
+                        </span>
+                        <input type="text" class="form-control itemInput" placeholder="Item ID">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default command itemButton" data-id="!unequip" data-toggle="tooltip" data-placement="top" title="Unequip an item from your inventory">Unequip</button>
+                        </span>
+                        <input type="text" class="form-control itemInput" placeholder="Item ID">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7 col-md-8 col-lg-8">
+                <h3 style="text-align: center;">Dungeon</h3>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2">
+                        <div class="btn-group-vertical" role="group" aria-label="none">
+                            <button type="button" class="btn btn-default command" data-id="!queuetime" data-toggle="tooltip" data-placement="right" title="Get how long you've been in Group Finder">Queue Time</button>
+                            <button type="button" class="btn btn-default command" data-id="!leavequeue" data-toggle="tooltip" data-placement="right" title="Leave Group Finder queue">Leave Queue</button>
+                            <button type="button" class="btn btn-default command" data-id="!createparty" data-toggle="tooltip" data-placement="right" title="Start a party for running Adventures">Create Party</button>
+                            <button type="button" class="btn btn-default command" data-id="!leaveparty" data-toggle="tooltip" data-placement="right" title="Leave your current party/disband party">Leave Party</button>
+                            <button type="button" class="btn btn-default command" data-id="!ready" data-toggle="tooltip" data-placement="right" title="Ready your party">Ready</button>
+                            <button type="button" class="btn btn-default command" data-id="!unready" data-toggle="tooltip" data-placement="right" title="Unready your party">Unready</button>
+                            <button type="button" class="btn btn-default command" data-id="!dungeonlist" data-toggle="tooltip" data-placement="right" title="Get link to Dungeon spreadsheet"><s>Dungeon List</s></button>
+                        </div>
+                    </div>
+                    <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
+                        <div class="btn-group-vertical" role="group" aria-label="none">
+                            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default command" data-id="!dungeon" data-toggle="tooltip" data-placement="top" title="Get detailed information about a dungeon">Dungeon</button>
+                                    </span>
+                                    <input id="dungeon_input" type="text" class="form-control" placeholder="Dungeon ID">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default command" data-id="!queue" data-toggle="tooltip" data-placement="top" title="Add you to Group Finder for a specific dungeon">Queue</button>
+                                    </span>
+                                    <input id="queue_input" type="text" class="form-control dungeonID" placeholder="Dungeon ID">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default command" data-id="!start" data-toggle="tooltip" data-placement="top" title="Start dungeon by dungeon id">Start</button>
+                                    </span>
+                                    <input id="dungeon_start" type="text" class="form-control dungeonID" placeholder="Dungeon ID">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default command" data-id="!kick" data-toggle="tooltip" data-placement="top" title="Kick user_name from your party">Kick User</button>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Username">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default command" data-id="!add" data-toggle="tooltip" data-placement="top" title="Add user_name to your party">Add User</button>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Username">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default command" data-id="/p" data-toggle="tooltip" data-placement="top" title="Sends a private message to your fellow party members">Message Party</button>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Message...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-7">
+                <div id="dungeonInfo" class="panel panel-info hidden">
+                    <div class="panel-heading">Panel heading without title</div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-5">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Party Classes</a>
+                                    <small>
+                                    <span class="output_success bg-info">S:<span id="output_value">0</span>%</span>
+                                    <span class="output_coin bg-info">C:<span id="output_value">0</span>%</span>
+                                    <span class="output_find bg-info">F:<span id="output_value">0</span>%</span>
+                                    <span class="output_xp bg-info">XP:<span id="output_value">0</span>%</span>
+                                    </small>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <input id="warrior_checkbox" class="class_table hidden" type="checkbox">
+                                <input id="mage_checkbox" class="class_table hidden" type="checkbox">
+                                <input id="rogue_checkbox" class="class_table hidden" type="checkbox">
+                                <input id="ranger_checkbox" class="class_table hidden" type="checkbox">
+                                <input id="cleric_checkbox" class="class_table hidden" type="checkbox">
+                                <div class="btn-group-vertical btn-block" role="group" aria-label="none">
+                                    <button type="button" class="btn btn-default class_button" data-id="warrior">Warrior</button>
+                                    <button type="button" class="btn btn-default class_button" data-id="mage">Mage</button>
+                                    <button type="button" class="btn btn-default class_button" data-id="rogue">Rogue</button>
+                                    <button type="button" class="btn btn-default class_button" data-id="ranger">Ranger</button>
+                                    <button type="button" class="btn btn-default class_button" data-id="cleric">Cleric</button>
+                                </div>
+                                <div id="class_table_output">
+                                    <span class="output_success">Success: <span id="output_value">0</span>%</span>,
+                                    <span class="output_coin">Coin Bonus: <span id="output_value">0</span>%</span>,
+                                    <span class="output_find">Item Find: <span id="output_value">0</span>%</span>,
+                                    <span class="output_xp">XP Bonus: <span id="output_value">0</span>%</span>
+                                    <p>
+                                        <span class="output_bonus">Extra: <span id="output_value"></span></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-9 col-sm-offset-1">
+                <div id="error"></div>
+            </div>
+        </div>
+        <div class="row" style="background-color:white;">
+            <div class="col-xs-12 col-xs-offset-0 col-sm-7 col-sm-offset-2">
+                <label class="sr-only" for="command_box">Input with help text</label>
+                <input id="command_box" class="form-control" type="text" placeholder="commands generated here...">
+                <span id="helpBlock" class="help-block">Copy and paste commands generated above</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button id="lobos_chat" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Open up Lobosjr Twitch Chat">Turn on Chat</button>
+                <iframe class="hidden" frameborder="0" scrolling="no" id="lobosjr_embed" height="400px" width="100%">
+                </iframe>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button id="quiet_chat" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add your own Twitch chat in to more easily see responses from Lobot">Quiet Chat</button>
+                    </span>
+                    <input id="quiet_chat" type="text" class="form-control" placeholder="Your user name">
+                </div>
+                <iframe class="hidden" frameborder="0" scrolling="no" id="chat_embed" height="400px" width="100%"></iframe>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <button id="lobos_stream" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Open up Lobosjr Twitch Stream">Turn on Stream</button>
+                <div id="embedly_container" class="embedly-responsive">
+                    <iframe id="lobosjr_stream_embed" class="embedly-embed hidden" frameborder="0" scrolling="no" allowfullscreen width="400" height="300"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src='js/vars.js'></script>
+    <script src='js/index.js'></script>
+</body>
+
+</html>
