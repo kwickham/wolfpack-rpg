@@ -6,15 +6,34 @@
 /**
  * add capitalize function to String object
  */
-String.prototype.capitalizeFirstLetter = function() {
+String.prototype.capitalizeFirstLetter = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
+
+function loadData(data) {
+    if (jQuery.type($("body").data(data)) != 'object') {
+        $.getJSON("vars/" + data + ".json")
+            .done(function (json) {
+                $("body").data(data, json);
+            })
+            .fail(function (jqxhr, textStatus, error) {
+                var err = textStatus + ", '" + data + "' variable file: " + error;
+                console.log(err);
+                $("body").data(data, {});
+            });
+    } else {
+        return $("body").data(data);
+    }
+}
+
 /**
  * Sets popover information with information about the class
  */
 function setCharacterInfo(char) {
     console.log('change info');
     if (char.charClass) {
+        var classes = loadData('classes');
+
         var classTest = char.charClass.toLowerCase();
         if (classes[classTest]) {
             var c = classes[classTest];
@@ -90,6 +109,7 @@ function characterInfo() {
  */
 function dungeonInfo(id) {
     var panel = $("#dungeonInfo");
+    var dungeons = loadData('dungeons');
     if (!dungeons[id]) {
         panel.addClass("hidden");
         return false;
@@ -125,13 +145,14 @@ function classStatCombiner(classList) {
         xp: 0,
         extra: ''
     };
-    classList.forEach(function(charClass) {
+    var classes = loadData('classes');
+    classList.forEach(function (charClass) {
         if (classes[charClass]) {
             totals.success = totals.success + classes[charClass].success;
             totals.coin = totals.coin + classes[charClass].wolfcoinBonus;
             totals.find = totals.find + classes[charClass].itemFind;
             totals.xp = totals.xp + classes[charClass].xpBonus;
-            Object.keys(classes[charClass].bonus).forEach(function(key) {
+            Object.keys(classes[charClass].bonus).forEach(function (key) {
                 totals.extra = totals.extra + classes[charClass].bonus[key];
             });
         }
@@ -141,11 +162,11 @@ function classStatCombiner(classList) {
 
 function classHelerTable(vars) {
     stats = classStatCombiner(vars);
-    $(".output_success").find("#output_value").text(stats.success);
-    $(".output_coin").find("#output_value").text(stats.coin);
-    $(".output_find").find("#output_value").text(stats.find);
-    $(".output_xp").find("#output_value").text(stats.xp);
-    $(".output_bonus").find("#output_value").text(stats.extra);
+    $(".output_success").find(".output_value").text(stats.success);
+    $(".output_coin").find(".output_value").text(stats.coin);
+    $(".output_find").find(".output_value").text(stats.find);
+    $(".output_xp").find(".output_value").text(stats.xp);
+    $(".output_bonus").find(".output_value").text(stats.extra);
 }
 
 //****** Actions *******//
@@ -156,7 +177,7 @@ var $body = $("body");
 /**
  * On Click
  */
-$body.on("click", ".command", function() {
+$body.on("click", ".command", function () {
     var command = $(this).attr('data-id');
     var query = '/w lobotjr ' + command;
 
@@ -166,7 +187,7 @@ $body.on("click", ".command", function() {
     }
     copyToClipboard(query);
 });
-$body.on('click', 'button[id=quiet_chat]', function() {
+$body.on('click', 'button[id=quiet_chat_button]', function () {
     var username = $("input[id=quiet_chat]").val();
     if (username != '') {
         localStorage.setItem('WRPG_SavedChat', username);
@@ -174,24 +195,24 @@ $body.on('click', 'button[id=quiet_chat]', function() {
         $("iframe[id=chat_embed]").attr("src", "//www.twitch.tv/" + username + "/chat");
     }
 });
-$body.on('click', 'button[id=lobos_chat]', function() {
+$body.on('click', 'button[id=lobos_chat]', function () {
     $("iframe[id=lobosjr_embed]").removeClass('hidden');
     $("iframe[id=lobosjr_embed]").attr("src", "//www.twitch.tv/lobosjr/chat");
 });
-$body.on('click', 'button[id=lobos_stream]', function() {
+$body.on('click', 'button[id=lobos_stream]', function () {
     $("#embedly_container").attr('style', 'position:relative;padding-bottom:75.0000%;height:0;overflow:hidden;');
     $("iframe[id=lobosjr_stream_embed]").removeClass('hidden');
     $("iframe[id=lobosjr_stream_embed]").attr('style', 'position:absolute;top:0;left:0;width:100%;height:100%;');
     $("iframe[id=lobosjr_stream_embed]").attr("src", "//cdn.embedly.com/widgets/media.html?src=%2F%2Fwww-cdn.jtvnw.net%2Fswflibs%2FTwitchPlayer.swff%3Fchannel%3Dlobosjrs&fv=hostname%3Dwww.twitch.tv%26start_volume%3D25%26channel%3Dlobosjr%26auto_play%3Dfalse&url=http%3A%2F%2Fwww.twitch.tv%2Flobosjr&image=http%3A%2F%2Fstatic-cdn.jtvnw.net%2Fjtv_user_pictures%2Flobosjr-profile_image-9c42176c5e6eb5db-600x600.jpeg&key=43cfe8de63744b7185b534b0ef9fe4f5&type=application%2Fx-shockwave-flash&schema=twitch");
 });
-$body.on('click', '.class_table', function() {
+$body.on('click', '.class_table', function () {
     var classes = [];
-    $(".class_table:checked").each(function() {
+    $(".class_table:checked").each(function () {
         classes.push($(this).attr('id').split('_')[0]);
     });
     classHelerTable(classes);
 });
-$body.on('click', '.class_button', function() {
+$body.on('click', '.class_button', function () {
     if (!$(this).hasClass('active')) {
         $(this).addClass('btn-info');
         $(this).addClass('active');
@@ -203,7 +224,7 @@ $body.on('click', '.class_button', function() {
     }
     $("#" + $(this).attr('data-id') + "_checkbox").click();
 });
-$body.on('click', "#helpToggle", function() {
+$body.on('click', "#helpToggle", function () {
     if (!$(this).hasClass('toggleOn')) {
         $(this).addClass('btn-warning');
         $(this).addClass('toggleOn');
@@ -218,26 +239,28 @@ $body.on('click', "#helpToggle", function() {
 /**
  * On Keyup
  */
-$body.on("keyup", ".dungeonID", function() {
+$body.on("keyup", ".dungeonID", function () {
     $('.dungeonID').val($(this).val());
     dungeonInfo($(this).val());
 });
-$body.on("keyup", ".itemInput", function() {
+$body.on("keyup", ".itemInput", function () {
     $('.itemInput').val($(this).val());
 });
 /**
  * On Change
  */
-$body.on('change', '.classInput', function() {
+$body.on('change', '.classInput', function () {
     localSave();
 });
 /**
  * On Copy
  */
-$("input[id=command_box]").bind('copy', function(test) {
+$("input[id=command_box]").bind('copy', function (test) {
     console.log(test);
 });
-
-
-//* Map local info
-localSet();
+loadData('dungeons');
+loadData('classes');
+$(document).ready(function () {
+    //* Map local info
+    localSet();
+});
