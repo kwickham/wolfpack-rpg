@@ -10,20 +10,24 @@ String.prototype.capitalizeFirstLetter = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
-function loadData(data) {
+function loadData(data, ready) {
     if (jQuery.type($("body").data(data)) != 'object') {
         $.getJSON("vars/" + data + ".json")
             .done(function (json) {
                 $("body").data(data, json);
+                if ( ready ){
+                    console.log('ready');
+                    $.holdReady( false );
+                }
             })
             .fail(function (jqxhr, textStatus, error) {
                 var err = textStatus + ", '" + data + "' variable file: " + error;
                 console.log(err);
                 $("body").data(data, {});
             });
-    } else {
-        return $("body").data(data);
     }
+    return $("body").data(data);
+
 }
 
 /**
@@ -81,7 +85,9 @@ function localSet() {
     setCharacterInfo(char);
     //$("#" +char.charClass.toLowerCase() + "_checkbox").prop( "checked", true );;
     //$("#" +char.charClass.toLowerCase() + "_checkbox").click();
-    $(".class_button[data-id=" + char.charClass.toLowerCase() + "]").click();
+    if ( char.charClass ) {
+        $(".class_button[data-id=" + char.charClass.toLowerCase() + "]").click();
+    }
 }
 /**
  * Throws a warning
@@ -105,7 +111,7 @@ function characterInfo() {
 }
 /**
  * Sets the dungeon information if found
- * @var object dungeons defined in vars.js file
+ * @var object dungeons
  */
 function dungeonInfo(id) {
     var panel = $("#dungeonInfo");
@@ -258,9 +264,10 @@ $body.on('change', '.classInput', function () {
 $("input[id=command_box]").bind('copy', function (test) {
     console.log(test);
 });
+$.holdReady( true );
 loadData('dungeons');
-loadData('classes');
-$(document).ready(function () {
+loadData('classes',true);
+$( document).ready(function () {
     //* Map local info
     localSet();
 });
