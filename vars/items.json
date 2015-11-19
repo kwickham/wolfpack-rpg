@@ -1,39 +1,124 @@
 {
-  "1": {
-    "dungeons": [4, 5],
-    "type": "uncommon",
-    "name": "Rogue's Jerkin",
-    "xp": 5,
-    "coins": 10,
-    "item": 0,
-    "success": 0
+  "mage":{
+    "weapon":{
+      "1":{
+        "dungeons":["5","6"],
+        "rarity":"uncommon",
+        "name":"Staff of the Wayfarer",
+        "success":"5",
+        "xp":"0",
+        "item":"5",
+        "coin":"0"
+      }
+    },
+    "armor":{
+      "1":{
+        "dungeons":["4"],
+        "rarity":"uncommon",
+        "name":"Adept's Robes",
+        "success":"0",
+        "xp":"5",
+        "item":"5",
+        "coin":"5"
+      }
+    }
   },
-  "2": {
-    "dungeons": [4, 5],
-    "type": "uncommon",
-    "name": "Mage's Robe",
-    "xp": 5,
-    "coins": 5,
-    "item": 5,
-    "success": 0
+  "ranger":{
+    "weapon":{
+      "1":{
+        "dungeons":["5"],
+        "rarity":"uncommon",
+        "name":"Scout's Shortbow",
+        "success":"5",
+        "xp":"5",
+        "item":"0",
+        "coin":"0"
+      }
+    },
+    "armor":{
+      "1":{
+        "dungeons":["4"],
+        "rarity":"uncommon",
+        "name":"Foxpelt Padding",
+        "success":"0",
+        "xp":"10",
+        "item":"5",
+        "coin":"5"
+      }
+    }
   },
-  "3": {
-    "dungeons": [4, 5],
-    "type": "uncommon",
-    "name": "Warrior's Plate",
-    "xp": 5,
-    "coins": 5,
-    "item": 0,
-    "success": 5
+  "warrior":{
+    "weapon":{
+      "1":{
+        "dungeons":["5","6"],
+        "rarity":"uncommon",
+        "name":"Rageborn Axe",
+        "success":"10",
+        "xp":"0",
+        "item":"0",
+        "coin":"0"
+      }
+    },
+    "armor":{
+      "1":{
+        "dungeons":["4"],
+        "rarity":"uncommon",
+        "name":"Wolfpack Plate",
+        "success":"5",
+        "xp":"5",
+        "item":"0",
+        "coin":"5"
+      }
+    }
   },
-  "4": {
-    "dungeons": [4, 5],
-    "type": "uncommon",
-    "name": "Cleric Mail",
-    "xp": 5,
-    "coins": 5,
-    "item": 0,
-    "success": 0,
-    "death": 5
+  "rogue":{
+    "weapon":{
+      "1":{
+        "dungeons":["5"],
+        "rarity":"uncommon",
+        "name":"Serrated Stiletto",
+        "success":"5",
+        "xp":"0",
+        "item":"0",
+        "coin":"5"
+      }
+    },
+    "armor":{
+      "1":{
+        "dungeons":["4"],
+        "rarity":"uncommon",
+        "name":"Vagrant's Chestguard",
+        "success":"0",
+        "xp":"5",
+        "item":"0",
+        "coin":"10"
+      }
+    }
+  },
+  "cleric":{
+    "weapon":{
+      "1":{
+        "dungeons":["5"],
+        "rarity":"uncommon",
+        "name":"Pilgrim's Cudgel",
+        "success":"5",
+        "xp":"0",
+        "item":"0",
+        "coin":"0",
+        "death":"5"
+      }
+    },
+    "armor":{
+      "1":{
+        "dungeons":["4"],
+        "rarity":"uncommon",
+        "name":"Robes of the Devout",
+        "success":"0",
+        "xp":"5",
+        "item":"0",
+        "coin":"5",
+        "death":"5"
+      }
+    }
   }
 }
