@@ -41,4 +41,16 @@
     "type": "dungeon",
     "cost": 90
   }
+  "8": {
+    "name": "Deep Delve",
+    "range": [9, 11],
+    "type": "dungeon",
+    "cost": 100
+  },
+  "9": {
+    "name": "Fel Tower",
+    "range": [10, 12],
+    "type": "dungeon",
+    "cost": 110
+  }
 }
