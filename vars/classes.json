@@ -30,7 +30,7 @@
     "name": "Ranger",
     "success": 5,
     "wolfcoinBonus": 3,
-    "itemFind": 3,
+    "itemFind": 0,
     "xpBonus": 10,
     "identifier": "C4",
     "bonus": {}
