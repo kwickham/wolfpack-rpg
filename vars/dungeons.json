@@ -40,7 +40,7 @@
     "range": [8, 10],
     "type": "dungeon",
     "cost": 90
-  }
+  },
   "8": {
     "name": "Deep Delve",
     "range": [9, 11],
