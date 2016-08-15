@@ -1,56 +1,111 @@
 {
   "1": {
     "name": "Ogre King's Lair",
-    "range": [2, 4],
+    "range": [3, 6],
     "type": "dungeon",
     "cost": 50
   },
   "2": {
     "name": "Darkwolf Warrens",
-    "range": [3, 5],
+    "range": [3, 7],
     "type": "dungeon",
     "cost": 50
   },
   "3": {
     "name": "Polar Fortress",
-    "range": [4, 6],
+    "range": [4, 8],
     "type": "dungeon",
     "cost": 50
   },
   "4": {
     "name": "Thunder Mountain",
-    "range": [5, 7],
+    "range": [5, 9],
     "type": "dungeon",
     "cost": 60
   },
   "5": {
     "name": "Jungle of Shadows",
-    "range": [6, 8],
+    "range": [6, 10],
     "type": "dungeon",
     "cost": 70
   },
   "6": {
     "name": "Eldritch Lab",
-    "range": [7, 9],
+    "range": [7, 11],
     "type": "dungeon",
     "cost": 80
   },
   "7": {
     "name": "Crypt of Iron",
-    "range": [8, 10],
+    "range": [8, 12],
     "type": "dungeon",
     "cost": 90
   },
   "8": {
     "name": "Deep Delve",
-    "range": [9, 11],
+    "range": [9, 13],
     "type": "dungeon",
     "cost": 100
   },
   "9": {
     "name": "Fel Tower",
-    "range": [10, 12],
+    "range": [10, 14],
     "type": "dungeon",
     "cost": 110
-  }
+  },
+  
+  "10": {
+    "name": "Ogre King's Lair [H]",
+    "range": [11, 15],
+    "type": "dungeon",
+    "cost": 120
+  },
+  "11": {
+    "name": "Darkwolf Warrens [H]",
+    "range": [12, 16],
+    "type": "dungeon",
+    "cost": 130
+  },
+  "12": {
+    "name": "Polar Fortress [H]",
+    "range": [13, 17],
+    "type": "dungeon",
+    "cost": 140
+  },
+  "13": {
+    "name": "Thunder Mountain [H]",
+    "range": [14, 18],
+    "type": "dungeon",
+    "cost": 150
+  },
+  "14": {
+    "name": "Jungle of Shadows [H]",
+    "range": [15, 19],
+    "type": "dungeon",
+    "cost": 160
+  },
+  "15": {
+    "name": "Eldritch Lab [H]",
+    "range": [16, 20],
+    "type": "dungeon",
+    "cost": 170
+  },
+  "16": {
+    "name": "Crypt of Iron [H]",
+    "range": [17, 20],
+    "type": "dungeon",
+    "cost": 180
+  },
+  "17": {
+    "name": "Deep Delve [H]",
+    "range": [18, 20],
+    "type": "dungeon",
+    "cost": 190
+  },
+  "18": {
+    "name": "Fel Tower [H]",
+    "range": [19, 20],
+    "type": "dungeon",
+    "cost": 200
+  },
 }
